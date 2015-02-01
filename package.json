@@ -1,0 +1,38 @@
+{
+  "name": "bardcode",
+  "version": "1.0.0",
+  "description": "Draw 1-D barcodes to Canvases",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Use meteor test-packages ./\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/froatsnook/bardcode"
+  },
+  "keywords": [
+    "barcode",
+    "codabar",
+    "code128",
+    "code 128",
+    "code39",
+    "code 39",
+    "ean",
+    "fim",
+    "itf",
+    "2of5",
+    "upc"
+  ],
+  "author": "froatsnook <froatsnook@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/froatsnook/bardcode/issues"
+  },
+  "homepage": "https://github.com/froatsnook/bardcode",
+  "devDependencies": {
+    "uglify-js": "^2.4.16"
+  }
+}
