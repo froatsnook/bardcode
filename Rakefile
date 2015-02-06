@@ -1,7 +1,7 @@
 ########
 # Dist #
 ########
-#
+
 WEB_HEADER = <<EOF
 ;(function() {
 var drawBarcode;
