@@ -8,6 +8,7 @@ Package.describe({
 Package.onUse(function(api) {
     api.versionsFrom("1.0.3.1");
     api.addFiles("lib/01-bardcode.js");
+    api.addFiles("lib/canvas.js");
     api.addFiles("lib/Codabar.js");
     api.addFiles("lib/Code128.js");
     api.addFiles("lib/Code39.js");
