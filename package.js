@@ -16,6 +16,7 @@ Package.onUse(function(api) {
     api.addFiles("lib/EAN.js");
     api.addFiles("lib/FIM.js");
     api.addFiles("lib/ITF.js");
+    api.addFiles("lib/svg.js");
     api.addFiles("lib/validations.js");
 
     api.export("drawBarcode");

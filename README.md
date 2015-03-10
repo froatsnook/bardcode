@@ -63,7 +63,7 @@ var bardcode = require("bardcode");
 bardcode.drawBarcode(g, barcodeText, options);
 ```
 
-* `g` is a Canvas' 2-D graphics context.
+* `g` is a Canvas' 2-D graphics context or the output format.  The only supported non-canvas output format is `"svg"`.
 * `barcodeText` is a string.  Allowed characters depend on the chosen symbology.
 * `options` is an optional object with the following properties:
     * `options.type` Barcode type.  Defaults to Code 128.  Other valid options are "Codabar", "Code 39", "EAN-8", "EAN-13", "FIM", "ITF" (interleaved 2 of 5), and "UPC-A".
@@ -80,6 +80,18 @@ bardcode.drawBarcode(g, barcodeText, options);
 
 Note: `width` and `maxWidth` refer to the unrotated barcode width.
 
+SVG
+===
+If the first parameter to `bardcode.drawBarcode`, `g`, is `"svg"`, then an SVG string is returned.
+
+For the moment, the only supported options when using SVG are:
+* `options.type`
+* `options.height`
+* `options.moduleWidth`
+* `options.quietZoneSize`
+* `options.maxWidth
+* `options.width`
+
 Errors
 ======
 Errors are thrown on invalid input, for example when including letters in EAN
@@ -89,7 +101,7 @@ Installation
 ============
 `node-canvas` installation causes issues for a lot of users.  So it's an
 optional dependency (i.e. you should Bring Your Own Canvas).  It's also not a
-node dependency because other output formats are planned.
+node dependency because it's not the only output format.
 
 For the browser:
 * Include `dist/bardcode.js` or `dist/bardcode.min.js`

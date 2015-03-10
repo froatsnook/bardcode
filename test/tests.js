@@ -220,5 +220,15 @@ if (Meteor.isServer) {
             quietZoneSize: 10
         });
     });
+
+    Tinytest.add("Test SVG", function(test) {
+        var svg = drawBarcode("svg", "3117820", {
+            maxWidth: 400,
+            height: 100,
+            quietZoneSize: 8
+        });
+
+        test.equal(svg.indexOf("<svg"), 0);
+    });
 }
 
