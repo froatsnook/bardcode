@@ -1,6 +1,6 @@
 Package.describe({
     name: "froatsnook:bardcode",
-    version: "1.0.0",
+    version: "1.1.0",
     summary: "Draw 1-D barcodes to Canvases (client and server)",
     git: "https://github.com/froatsnook/bardcode"
 });
