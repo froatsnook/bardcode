@@ -82,7 +82,7 @@ For the moment, the only supported options when using SVG are:
 * `options.height`
 * `options.moduleWidth`
 * `options.quietZoneSize`
-* `options.maxWidth
+* `options.maxWidth`
 * `options.width`
 
 Errors
