@@ -29,6 +29,7 @@ Package.onTest(function(api) {
     });
 
     api.use("tinytest");
+    api.use("froatsnook:stream-to-buffer@1.0.1");
     api.use("froatsnook:bardcode");
 
     api.addFiles("test/tests.js");
