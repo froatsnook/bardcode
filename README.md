@@ -104,6 +104,17 @@ For meteor:
 * (optional) `meteor add meteorhacks:npm` and add `"canvas": "1.1.6"` to `packages.json`
 * `meteor add froatsnook:bardcode`
 
+Testing
+=======
+Tests require meteor and zbar.
+
+* Download zbar: http://zbar.sourceforge.net/
+* `./configure --disable-video --without-qt --without-gtk --without-python`
+* `make`
+* Copy `zbarimg/zbarimg` and `zbar/.libs/libzbar.so*` to a new directory called `zbar` in `bardcode`'s project directory
+* `meteor test-packages ./` in `bardcode`'s project directory
+* Open `localhost:3000` in a browser
+
 License
 =======
 MIT
