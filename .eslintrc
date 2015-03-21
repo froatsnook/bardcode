@@ -1,0 +1,18 @@
+{
+    "globals": {
+        "$": false,
+        "bardcode": true,
+        "drawBarcode": true,
+        "Meteor": false,
+    },
+    "rules": {
+        // I use var names like _example to indicate private API
+        "no-underscore-dangle": 0,
+
+        // Don't care about global "use strict" because meteor wraps files
+        // with functions anyway
+        "global-strict": 0,
+
+        "indent": [2, 4]
+    }
+}

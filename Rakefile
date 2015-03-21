@@ -63,6 +63,14 @@ task :dist do
   sh "./node_modules/.bin/uglifyjs --mangle --screw-ie8 dist/bardcode.js -o dist/bardcode.min.js"
 end
 
+########
+# Lint #
+########
+desc "Lint javascript files"
+task :lint do
+  sh "eslint lib"
+end
+
 #########
 # Clean #
 #########
