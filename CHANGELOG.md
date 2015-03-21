@@ -1,3 +1,8 @@
+1.1.1 - 2015-03-21
+==================
+* Automated tests via zbar
+* Fixed Code 39 rendering
+
 1.1.0 - 2015-03-10
 ==================
 * Experimental SVG support
