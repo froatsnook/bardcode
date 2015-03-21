@@ -25,7 +25,7 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
     Npm.depends({
-        "canvas": "1.1.6"
+        "canvas": "1.2.1"
     });
 
     api.use("tinytest");
