@@ -1,21 +1,19 @@
 Render 1D barcodes to canvas or svg, packaged for Meteor, npm, and the web.
 
-Why?
-====
+## Why?
 This barcode library specializes in its use of the canvas API.  You provide a canvas (be it in a browser or with [node-canvas](https://github.com/Automattic/node-canvas)), and then specify where the barcode should be drawn, how large it should be, and at what angle.
 
 Other barcode libraries that I found created pngs or svgs directly and were not very flexible in the output size (i.e. no `maxWidth` option).  Rendering directly to a canvas allows for a flexible API if that's your target anyway.
 
-How?
-====
-```javascript
+## How?
+```js
 // In the browser
 var canvas = $("#canvas");
 var g = canvas.get(0).getContext("2d");
 drawBarcode(g, "Test barcode", options);
 ```
 
-```javascript
+```js
 // On the server
 var bardcode = require("bardcode");
 var Canvas = require("canvas");
@@ -24,7 +22,7 @@ var g = canvas.getContext("2d");
 bardcode.drawBarcode(g, "Test barcode", options);
 ```
 
-```javascript
+```js
 // Meteor server
 var Canvas = Meteor.npmRequire("canvas");
 var canvas = new Canvas(595, 842, "pdf");
@@ -32,8 +30,7 @@ var g = canvas.getContext("2d");
 drawBarcode(g, "Test barcode", options);
 ```
 
-Symbology
-=========
+## Symbology
 The following barcode formats are supported:
 
 * Codabar
@@ -45,9 +42,8 @@ The following barcode formats are supported:
 * ITF (interleaved 2 of 5)
 * UPC-A
 
-API
-===
-```javascript
+## API
+```js
 // browser+meteor
 drawBarcode(g, barcodeText, options);
 
@@ -73,8 +69,7 @@ bardcode.drawBarcode(g, barcodeText, options);
 
 Note: `width` and `maxWidth` refer to the unrotated barcode width.
 
-SVG
-===
+## SVG
 If the first parameter to `bardcode.drawBarcode`, `g`, is `"svg"`, then an SVG string is returned.
 
 For the moment, the only supported options when using SVG are:
@@ -85,12 +80,10 @@ For the moment, the only supported options when using SVG are:
 * `options.maxWidth`
 * `options.width`
 
-Errors
-======
+## Errors
 Errors are thrown on invalid input, for example when including letters in EAN barcodes.
 
-Installation
-============
+## Installation
 `node-canvas` installation causes issues for a lot of users.  So it's an optional dependency (i.e. you should Bring Your Own Canvas).  It's also not a node dependency because it's not the only output format.
 
 For the browser:
@@ -104,8 +97,7 @@ For meteor:
 * (optional) `meteor add meteorhacks:npm` and add `"canvas": "1.1.6"` to `packages.json`
 * `meteor add froatsnook:bardcode`
 
-Testing
-=======
+## Testing
 Tests require meteor and zbar.
 
 * Download zbar: http://zbar.sourceforge.net/
@@ -115,7 +107,6 @@ Tests require meteor and zbar.
 * `meteor test-packages ./` in `bardcode`'s project directory
 * Open `localhost:3000` in a browser
 
-License
-=======
+## License
 MIT
 
