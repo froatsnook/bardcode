@@ -1,4 +1,4 @@
-Render 1D barcodes to canvas or svg, packaged for Meteor, npm, and the web.
+Render 1-D barcodes to canvas or svg.  Supports Code 128, 3 of 9, 2 of 5, EAN, and more.
 
 ## Why?
 This barcode library specializes in its use of the canvas API.  You provide a canvas (be it in a browser or with [node-canvas](https://github.com/Automattic/node-canvas)), and then specify where the barcode should be drawn, how large it should be, and at what angle.
