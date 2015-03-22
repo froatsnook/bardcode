@@ -3,6 +3,12 @@
 ########
 
 WEB_HEADER = <<EOF
+/**
+ * bardcode v#{/version: "(.*)"/.match(File.read("package.js"))[1]}
+ * https://github.com/froatsnook/bardcode
+ * (c) 2015 froatsnook
+ * bardcode may be freely distributed under the MIT license.
+ */
 ;(function() {
 var drawBarcode;
 var bardcode;
