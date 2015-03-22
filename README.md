@@ -8,8 +8,8 @@ Other barcode libraries that I found created pngs or svgs directly and were not 
 ## How?
 ```js
 // In the browser
-var canvas = $("#canvas");
-var g = canvas.get(0).getContext("2d");
+var canvas = document.getElementById("barcode-canvas");
+var g = canvas.getContext("2d");
 drawBarcode(g, "Test barcode", options);
 ```
 
