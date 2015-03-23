@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    background: #f4f4f4;
+    width: 100%;
+    font-family: Helvetica, sans-serif;
+    color: #444;
+    overflow-x: hidden;
+    line-height: 1.4;
+}
+
+#content {
+    margin: 20px auto;
+}
+
+.content {
+    position: relative;
+    width: 80%;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+#header {
+    background: #2d273b;
+    color: #BBE0F0;
+    height: 100px;
+    width: 100%;
+    border-bottom: 5px solid #18141f;
+}
+
+#header-content {
+    padding-top: 27px;
+}
+
+#title {
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+}
+
+#subtitle {
+    position: relative;
+    color: #d6f4a2;
+    font-size: 14px;
+}
+
+#demos {
+    margin-top: 60px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.demo-container {
+    text-align: center;
+}
+
+.demo {
+    display: inline-block;
+    background: white;
+    border-bottom: 5px solid #e3e3e3;
+    text-align: center;
+    padding: 20px;
+    margin-top: 2px;
+    margin-bottom: 48px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+}
+
+h2 {
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+h3 {
+    font-size: 16px;
+    position: relative;
+    top: -8px;
+    margin: 15px 0px;
+}
+
+.demo-code {
+    font-family: 'Droid Sans Mono', monospace;
+    display: inline-block;
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+    overflow: auto;
+    vertical-align: top;
+    background: #2d273b;
+    color: #d6f4a2;
+
+    padding: 9px;
+    resize: none;
+
+}
+
+.demo-code::-webkit-scrollbar              { width: 8px; }
+.demo-code::-webkit-scrollbar-button       { }
+.demo-code::-webkit-scrollbar-track        { }
+.demo-code::-webkit-scrollbar-track-piece  { }
+.demo-code::-webkit-scrollbar-thumb        { background: #f2cf66; border-radius: 0; }
+.demo-code::-webkit-scrollbar-corner       { }
+.demo-code::-webkit-resizer                { }
+
+.demo-canvas {
+    display: inline-block;
+    border: 1px solid #2d273b;
+    vertical-align: top;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+ul {
+    margin-bottom: 12px;
+}
+
+li {
+    margin-left: 28px;
+}
+
+.mono {
+    font-family: 'Droid Sans Mono', monospace;
+}
+
