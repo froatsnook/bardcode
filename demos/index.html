@@ -8,7 +8,7 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body onload="initReact()">
+  <body onload="var initInterval = setInterval(function() { if (window.initReact) { clearInterval(initInterval); window.initReact(); } }, 50);">
     <div id="header">
       <div id="header-content" class="content">
         <h1 id="title">bardcode demos/playground</h1>
