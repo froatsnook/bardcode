@@ -43,6 +43,15 @@ body {
     font-size: 20px;
 }
 
+#title > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#title > a:visited {
+    color: inherit;
+}
+
 #subtitle {
     position: relative;
     color: #d6f4a2;
@@ -135,5 +144,23 @@ li {
 
 .mono {
     font-family: 'Droid Sans Mono', monospace;
+}
+
+#footer {
+
+}
+
+#footer a {
+    font-weight: bold;
+    color: #f2cf66;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+#footer a:visited {
+    color: #f2cf66;
 }
 
