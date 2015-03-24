@@ -1,4 +1,4 @@
-function initReact() {
+(function() {
 
 "use strict";
 
@@ -285,5 +285,5 @@ for (var i = 0; i < barcodes.length; i++) {
   document.getElementById("content")
 );
 
-}
+})();
 
