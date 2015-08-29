@@ -1,5 +1,5 @@
 /**
- * bardcode v1.1.2
+ * bardcode v1.1.3
  * https://github.com/froatsnook/bardcode
  * (c) 2015 froatsnook
  * bardcode may be freely distributed under the MIT license.
