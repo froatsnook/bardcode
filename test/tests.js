@@ -315,6 +315,11 @@ if (Meteor.isServer) {
         test.equal(encodeData.checksum, 1);
     });
 
+    Tinytest.add("EAN - checksum(\"846823000342\") == 0", function(test) {
+        var encodeData = bardcode.encodeEAN("846823000342");
+        test.equal(encodeData.checksum, 0);
+    });
+
     Tinytest.add("EAN - checksum(\"9638507\") == 4", function(test) {
         var encodeData = bardcode.encodeEAN("9638507");
         test.equal(encodeData.checksum, 4);
