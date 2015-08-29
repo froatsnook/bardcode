@@ -511,7 +511,14 @@ bardcode.encodeEAN = function(text) {
         sum += weight * n;
     }
 
-    var checksum = 10 - sum % 10;
+    // This could probably be achieved with a modulo and a check for 10 to wrap.
+    // However this implementation was lifted from the GS1 website:
+    // http://www.gs1.org/check-digit-calculator and is therefore guaranteed correct.
+    var closest = Math.round(sum / 10) * 10;
+    var checksum = closest - sum;
+    if (checksum < 0) {
+        checksum = (closest + 10) - sum;
+    }
     text += checksum;
 
     var outlist = [];
