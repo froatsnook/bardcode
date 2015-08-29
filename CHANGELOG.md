@@ -1,3 +1,7 @@
+1.1.3 - 2015-08-29
+==================
+* Fix EAN checksum bug.  Thank you wolfgang42!
+
 1.1.2 - 2015-03-23
 ==================
 * Added demos
