@@ -924,16 +924,20 @@ drawBarcode = bardcode.drawBarcode = function(g, text, options) {
         case "ITF":
             encodeData = bardcode.encodeITF(text);
             break;
-        case "EAN-8":
-            encodeData = bardcode.encodeEAN(text, options.hasChecksum);
-            break;
-        case "EAN-13":
-            encodeData = bardcode.encodeEAN(text, options.hasChecksum);
-            break;
         case "FIM":
             encodeData = bardcode.encodeFIM(text);
             break;
+        case "EAN-8":
+        case "EAN-13":
         case "UPC-A":
+            var expectedLength;
+            if (options.type == "EAN-8")  expectedLength = 7;
+            if (options.type == "EAN-13") expectedLength = 12;
+            if (options.type == "UPC-A")  expectedLength = 11;
+            if (options.hasChecksum) expectedLength += 1;
+            if (expectedLength != text.length) {
+                throw new Error(options.type+" must be of length "+expectedLength);
+            }
             encodeData = bardcode.encodeEAN(text, options.hasChecksum);
             break;
     }
