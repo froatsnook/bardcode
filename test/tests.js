@@ -320,9 +320,43 @@ if (Meteor.isServer) {
         test.equal(encodeData.checksum, 0);
     });
 
+    Tinytest.add("EAN - valid checksum(\"846823000342\")", function(test) {
+        var encodeData = bardcode.encodeEAN("846823000342", true);
+        test.equal(encodeData.checksum, 2);
+    });
+
+    Tinytest.add("EAN - invalid checksum(\"846823000344\")", function(test) {
+        test.throws(
+            function(){ bardcode.encodeEAN("846823000344", true); },
+            "Invalid checksum."
+        );
+    });
+
     Tinytest.add("EAN - checksum(\"9638507\") == 4", function(test) {
         var encodeData = bardcode.encodeEAN("9638507");
         test.equal(encodeData.checksum, 4);
+    });
+
+    Tinytest.add("EAN - UPC-A, precalculated checksum", function(test) {
+        var canvas = new Canvas(400, 100);
+        var g = canvas.getContext("2d");
+        g.fillStyle = "white";
+        g.fillRect(0, 0, 400, 100);
+        drawBarcode(g, "846823000342", {
+            type: "UPC-A",
+            hasChecksum: true,
+            maxWidth: 400,
+            height: 100,
+            quietZoneSize: 10
+        });
+
+        var zbarOutput = getBarcodes(canvas.toBuffer());
+        test.equal(zbarOutput.code, 0);
+        var output = zbarOutput.stdout.trim();
+        var lines = output.split("\n");
+        test.equal(lines.length, 1);
+        // UPC-A is EAN-13 with a leading zero
+        test.equal(lines[0], "EAN-13:0846823000342");
     });
 
     Tinytest.add("EAN - UPC-A", function(test) {

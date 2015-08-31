@@ -490,9 +490,15 @@ var eanData = [
     ["0001011", "0010111", "1110100"]
 ];
 
-bardcode.encodeEAN = function(text) {
+bardcode.encodeEAN = function(text, hasChecksum) {
     if (!/^\d+$/.test(text)) {
         throw new Error("EAN can only encode numbers.");
+    }
+
+    var origChecksum;
+    if (hasChecksum) {
+        origChecksum = text.substr(text.length-1, 1)
+        text = text.substr(0, text.length-1);
     }
 
     var len = text.length;
@@ -511,6 +517,9 @@ bardcode.encodeEAN = function(text) {
     var checksum = closest - sum;
     if (checksum < 0) {
         checksum = (closest + 10) - sum;
+    }
+    if (hasChecksum && checksum != origChecksum) {
+        throw new Error("Invalid checksum.");
     }
     text += checksum;
 
@@ -836,6 +845,7 @@ bardcode.drawBitsBarcodeToCanvas = function(g, options, encodeData) {
 
 var optionDefaults = {
     type: "Code 128",
+    hasChecksum: false,
     x: 0,
     y: 0,
     moduleWidth: 2.892,
@@ -864,6 +874,7 @@ var copyDefaults = function(target, source) {
  * @param {String} text Barcode text (without start, end, or check characters).
  * @param {Object} options Controls what barcode is drawn, where, and how.
  * @param {String} options.type Barcode type.  Defaults to Code 128.  Other valid options are "Codabar", "Code 39", "EAN-8", "EAN-13", "FIM", "ITF" (interleaved 2 of 5), and "UPC-A".
+ * @param {Boolean} options.hasChecksum If true, the barcode already has a checksum (which will be validated); if false, calculate and add a checksum. Defaults to false. **Currently works only for EAN-type barcodes (EAN-8, EAN-13, UPC-A).**
  * @param {Number} options.x Where to draw barcode.  Defaults to 0.
  * @param {Number} options.y Where to draw the barcode.  Defaults to 0.
  * @param {String} options.horizontalAlign How to align the barcode.  Defaults to "left".  Other options are "center" and "right".
@@ -907,16 +918,16 @@ drawBarcode = bardcode.drawBarcode = function(g, text, options) {
             encodeData = bardcode.encodeITF(text);
             break;
         case "EAN-8":
-            encodeData = bardcode.encodeEAN(text);
+            encodeData = bardcode.encodeEAN(text, options.hasChecksum);
             break;
         case "EAN-13":
-            encodeData = bardcode.encodeEAN(text);
+            encodeData = bardcode.encodeEAN(text, options.hasChecksum);
             break;
         case "FIM":
             encodeData = bardcode.encodeFIM(text);
             break;
         case "UPC-A":
-            encodeData = bardcode.encodeEAN(text);
+            encodeData = bardcode.encodeEAN(text, options.hasChecksum);
             break;
     }
 
@@ -929,6 +940,7 @@ drawBarcode = bardcode.drawBarcode = function(g, text, options) {
 };
 
 bardcode.validateDrawBarcodeOptions = function validateDrawBarcodeOptions(options) {
+    bardcode.assertIsBoolean(options.hasChecksum, "options.hasChecksum");
     bardcode.assertIsNumber(options.x, "options.x");
     bardcode.assertIsNumber(options.y, "options.y");
     bardcode.assertIsValidHorizontalAlign(options.horizontalAlign);
@@ -1066,6 +1078,12 @@ bardcode.assertIsValidVerticalAlign = function(x) {
 bardcode.assertIsNumber = function(x, name) {
     if (typeof x !== "number") {
         throw new Error("Expected " + name + " to be a number, got " + x);
+    }
+};
+
+bardcode.assertIsBoolean = function(x, name) {
+    if (typeof x !== "boolean") {
+        throw new Error("Expected " + name + " to be a boolean, got " + x);
     }
 };
 
