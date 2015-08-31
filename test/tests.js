@@ -325,6 +325,27 @@ if (Meteor.isServer) {
         test.equal(encodeData.checksum, 4);
     });
 
+    Tinytest.add("EAN - UPC-A", function(test) {
+        var canvas = new Canvas(400, 100);
+        var g = canvas.getContext("2d");
+        g.fillStyle = "white";
+        g.fillRect(0, 0, 400, 100);
+        drawBarcode(g, "84682300034", {
+            type: "UPC-A",
+            maxWidth: 400,
+            height: 100,
+            quietZoneSize: 10
+        });
+
+        var zbarOutput = getBarcodes(canvas.toBuffer());
+        test.equal(zbarOutput.code, 0);
+        var output = zbarOutput.stdout.trim();
+        var lines = output.split("\n");
+        test.equal(lines.length, 1);
+        // UPC-A is EAN-13 with a leading zero
+        test.equal(lines[0], "EAN-13:0846823000342");
+    });
+
     Tinytest.add("EAN - EAN-13", function(test) {
         var canvas = new Canvas(400, 100);
         var g = canvas.getContext("2d");
