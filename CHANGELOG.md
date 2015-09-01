@@ -1,3 +1,7 @@
+1.2.0 - 2015-09-01
+==================
+* Add `options.hasChecksum`.  Thank you wolfgang42!
+
 1.1.3 - 2015-08-29
 ==================
 * Fix EAN checksum bug.  Thank you wolfgang42!
