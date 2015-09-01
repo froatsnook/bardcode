@@ -1,5 +1,5 @@
 /**
- * bardcode v1.1.3
+ * bardcode v1.2.0
  * https://github.com/froatsnook/bardcode
  * (c) 2015 froatsnook
  * bardcode may be freely distributed under the MIT license.
@@ -504,8 +504,8 @@ bardcode.encodeEAN = function(text, hasChecksum) {
 
     var origChecksum;
     if (hasChecksum) {
-        origChecksum = text.substr(text.length-1, 1)
-        text = text.substr(0, text.length-1);
+        origChecksum = text.substr(text.length - 1, 1);
+        text = text.substr(0, text.length - 1);
     }
 
     var len = text.length;

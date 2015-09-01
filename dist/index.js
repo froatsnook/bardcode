@@ -497,8 +497,8 @@ bardcode.encodeEAN = function(text, hasChecksum) {
 
     var origChecksum;
     if (hasChecksum) {
-        origChecksum = text.substr(text.length-1, 1)
-        text = text.substr(0, text.length-1);
+        origChecksum = text.substr(text.length - 1, 1);
+        text = text.substr(0, text.length - 1);
     }
 
     var len = text.length;
