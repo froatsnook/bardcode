@@ -111,6 +111,11 @@ Tests require meteor and zbar.
 * `meteor test-packages ./` in `bardcode`'s project directory
 * Open `localhost:3000` in a browser
 
+## Contributors
+Thank you:
+
+* [wolfgang42](https://github.com/wolfgang42)
+
 ## License
 MIT
 
