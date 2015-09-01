@@ -1,6 +1,6 @@
 Package.describe({
     name: "froatsnook:bardcode",
-    version: "1.1.3",
+    version: "1.2.0",
     summary: "Draw 1-D barcodes (client and server); supports code 128, 3 of 9, 2 of 5, EAN, and more",
     git: "https://github.com/froatsnook/bardcode"
 });
