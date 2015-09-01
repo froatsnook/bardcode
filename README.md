@@ -59,6 +59,7 @@ bardcode.drawBarcode(g, barcodeText, options);
 * `barcodeText` is a string.  Allowed characters depend on the chosen symbology.
 * `options` is an optional object with the following properties:
     * `options.type` Barcode type.  Defaults to Code 128.  Other valid options are "Codabar", "Code 39", "EAN-8", "EAN-13", "FIM", "ITF" (interleaved 2 of 5), and "UPC-A".
+    * `options.hasChecksum` If true, the barcode already has a checksum (which will be validated); if false, calculate and add a checksum. Defaults to false. **Currently works only for EAN-type barcodes (EAN-8, EAN-13, UPC-A).** 
     * `options.x` Where to draw barcode.  Defaults to 0.
     * `options.y` Where to draw the barcode.  Defaults to 0.
     * `options.horizontalAlign` How to align the barcode.  Defaults to "left".  Other options are "center" and "right".
