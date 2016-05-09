@@ -8,6 +8,10 @@ Other barcode libraries that I found created pngs or svgs directly and were not 
 ## Demos/Playground
 First of all, check out the [demos](https://froatsnook.github.io/bardcode/).
 
+## Barcode Generator
+
+Did you ever want to paste a list of strings and download a zip file of corresponding images?  Well I did once and made this [barcode-generator](https://froatsnook.github.io/barcode-generator).  See demos for the source.
+
 ## How?
 ```js
 // In the browser
