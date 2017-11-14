@@ -1,13 +1,17 @@
 {
   "name": "bardcode",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Draw 1-D barcodes to Canvases",
-  "main": "dist/index.js",
+  "main": "dist/bardcode.js",
+  "jsnext:main": "dist/bardcode.es.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Use meteor test-packages ./\" && exit 1"
+    "test": "echo \"Use meteor test-packages ./\" && exit 1",
+    "build": "rollup -f umd -c build/rollup.config.js -o dist/bardcode.js && cp dist/bardcode.js demos",
+    "buildes": "rollup -f es -c build/rollup.config.js -o dist/bardcode.es.js",
+    "minify": "uglifyjs dist/bardcode.js --compress --mangle -o dist/bardcode.min.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +37,13 @@
   },
   "homepage": "https://github.com/froatsnook/bardcode",
   "devDependencies": {
-    "eslint": "^0.17.1",
-    "uglify-js": "^2.4.16"
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.10.0",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-json": "^2.3.0",
+    "uglify-js": "^3.1.8"
   }
 }

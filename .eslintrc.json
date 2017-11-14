@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+    }
+  },
+  "globals": {
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "semi": "error",
+    "comma-dangle": ["error", "always-multiline"],
+    "quotes": ["error", "double"],
+    "no-console": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "no-useless-concat": "error",
+    "prefer-template": "error"
+  }
+}

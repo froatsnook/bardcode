@@ -1,12 +1,6 @@
 /*
  * bardcode (c) 2016-2017 froatsnook
  */
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.bardcode = {})));
-}(this, (function (exports) { 'use strict';
-
 function assertIsValidHorizontalAlign(x) {
   switch (x) {
     case "left":
@@ -1065,9 +1059,4 @@ function drawBitsBarcode(g, options, encodeData) {
 
 var version = "2.0.0";
 
-exports.drawBarcode = drawBarcode;
-exports.version = version;
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+export { drawBarcode, version };

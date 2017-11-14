@@ -100,7 +100,7 @@ var canvas = document.getElementById("demo-1");
 var g = canvas.getContext("2d");
 g.fillStyle = "white";
 g.fillRect(0, 0, w, h);
-drawBarcode(g, "test", { });
+bardcode.drawBarcode(g, "test", { });
 `}
       </Demo>
 
@@ -113,7 +113,7 @@ var canvas = document.getElementById("demo-2");
 var g = canvas.getContext("2d");
 g.fillStyle = "white";
 g.fillRect(0, 0, w, h);
-drawBarcode(g, "test", {
+bardcode.drawBarcode(g, "test", {
     quietZoneSize: 0
 });
 `}
@@ -128,7 +128,7 @@ var canvas = document.getElementById("demo-3");
 var g = canvas.getContext("2d");
 g.fillStyle = "white";
 g.fillRect(0, 0, w, h);
-drawBarcode(g, "test", {
+bardcode.drawBarcode(g, "test", {
     x: w/2,
     y: h/2,
     horizontalAlign: "center",
@@ -146,7 +146,7 @@ var canvas = document.getElementById("demo-4");
 var g = canvas.getContext("2d");
 g.fillStyle = "white";
 g.fillRect(0, 0, w, h);
-drawBarcode(g, "test", {
+bardcode.drawBarcode(g, "test", {
     x: w/2,
     y: h/2,
     horizontalAlign: "center",
@@ -179,7 +179,7 @@ g.fillRect(0, 0, w, h);
 
 drawGrid(g, w, h, 20);
 
-drawBarcode(g, "test", {
+bardcode.drawBarcode(g, "test", {
     x: w/2,
     y: 0,
     moduleWidth: 2,
@@ -188,7 +188,7 @@ drawBarcode(g, "test", {
     verticalAlign: "top",
     height: 50
 });
-drawBarcode(g, "test", {
+bardcode.drawBarcode(g, "test", {
     x: w/2,
     y: 60,
     maxWidth: 2*w/3,
@@ -196,7 +196,7 @@ drawBarcode(g, "test", {
     verticalAlign: "top",
     height: 50
 });
-drawBarcode(g, "test", {
+bardcode.drawBarcode(g, "test", {
     x: w/2,
     y: 120,
     maxWidth: 2*w/3,
@@ -205,7 +205,7 @@ drawBarcode(g, "test", {
     verticalAlign: "top",
     height: 50
 });
-drawBarcode(g, "test", {
+bardcode.drawBarcode(g, "test", {
     x: w/2,
     y: 180,
     width: w,
@@ -213,7 +213,7 @@ drawBarcode(g, "test", {
     verticalAlign: "top",
     height: 50
 });
-drawBarcode(g, "test", {
+bardcode.drawBarcode(g, "test", {
     x: w/2,
     y: 240,
     width: w,
@@ -230,7 +230,7 @@ drawBarcode(g, "test", {
     <section>
       <h2>Symbologies</h2>
 
-      <p>So far all of the barcodes have been Code-128 encoded "test".  Use the second parameter to `drawBarcode` to change the barcode text, and set <span className="mono">options.type</span> to use a different symbology.</p>
+      <p>So far all of the barcodes have been Code-128 encoded "test".  Use the second parameter to `bardcode.drawBarcode` to change the barcode text, and set <span className="mono">options.type</span> to use a different symbology.</p>
 
       <p>The supported symbologies are:</p>
       <ul>
@@ -267,7 +267,7 @@ var targetHeight = (h + 5)/barcodes.length;
 
 for (var i = 0; i < barcodes.length; i++) {
   var barcode = barcodes[i];
-  drawBarcode(g, barcode.val, {
+  bardcode.drawBarcode(g, barcode.val, {
     type: barcode.type,
     x: w/2,
     y: i*targetHeight,
