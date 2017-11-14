@@ -737,6 +737,74 @@ function drawBitsBarcodeToCanvas(g, options, encodeData) {
   };
 }
 
+function drawBitsBarcodeToPath(options, encodeData) {
+  var bits = encodeData.data.map(function (d) {
+    return d.bits;
+  }).join("");
+
+  var multiplier = bits.length + 2 * options.quietZoneSize;
+
+  var bw = void 0;
+  var width = void 0;
+  if (!isNaN(options.width)) {
+    // options.width takes precedence... if given, then it overrides
+    // moduleWidth and maxWidth
+    width = options.width;
+    bw = width / multiplier;
+  } else {
+    // Try to use the given moduleWidth
+    bw = options.moduleWidth;
+    width = multiplier * bw;
+
+    // But adjust if it doesn't fit in maxWidth (if given)
+    if (width > options.maxWidth) {
+      width = options.maxWidth;
+      bw = width / multiplier;
+    }
+  }
+
+  var height = options.height;
+
+  var rects = [];
+
+  // Walk xpos from left to right side.
+  var xpos = options.quietZoneSize * bw;
+
+  var n = 0;
+  while (n < bits.length) {
+    // We are at the start of a bar or a space.
+    var bit = bits[n];
+    if (bit === "1") {
+      // We are at a bar.
+      var barCount = 1;
+      while (n < bits.length && bits[++n] === "1") {
+        barCount++;
+      }
+
+      var barWidth = barCount * bw;
+
+      rects.push("M " + xpos.toFixed(3) + ",0");
+      rects.push("l " + barWidth + ",0");
+      rects.push("l 0," + height);
+      rects.push("l " + (-barWidth).toFixed(3) + ",0");
+      rects.push("Z");
+
+      xpos += barWidth;
+    } else {
+      // We are at a space.
+      var spaceCount = 1;
+      while (n < bits.length && bits[++n] === "0") {
+        spaceCount++;
+      }
+
+      var spaceWidth = spaceCount * bw;
+      xpos += spaceWidth;
+    }
+  }
+
+  return rects.join(" ");
+}
+
 function drawBitsBarcodeToSVG(options, encodeData) {
   var bits = encodeData.data.map(function (d) {
     return d.bits;
@@ -954,7 +1022,7 @@ var copyDefaults = function copyDefaults(target, source) {
 /**
  * @summary Draw a barcode to a canvas graphics context.
  * @todo IMB, Pharmacode, PostBar, POSTNET, Telepen
- * @param {Context2D|String} g An HTML5 or node-canvas graphics context or the output format.  The only supported non-canvas output format is "svg".
+ * @param {Context2D|String} g An HTML5 or node-canvas graphics context or the output format.  The only supported non-canvas output formats are "path" and "svg".
  * @param {String|String[]} text Barcode text (without start, end, or check characters).  It can also be an array of characters, in case you want to include a command character, like "FNC 1".
  * @param {Object} options Controls what barcode is drawn, where, and how.
  * @param {String} options.type Barcode type.  Defaults to Code 128.  Other valid options are "Codabar", "Code 39", "EAN-8", "EAN-13", "FIM", "ITF" (interleaved 2 of 5), and "UPC-A".
@@ -972,8 +1040,8 @@ var copyDefaults = function copyDefaults(target, source) {
  */
 function drawBarcode(g, text, options) {
   // Validate input.
-  if ((typeof g === "undefined" ? "undefined" : _typeof(g)) !== "object" && g !== "svg") {
-    throw new Error("drawBarcode: expected `g' to be an object or 'svg'.");
+  if ((typeof g === "undefined" ? "undefined" : _typeof(g)) !== "object" && g !== "path" && g !== "svg") {
+    throw new Error("drawBarcode: expected `g' to be an object or 'path' or 'svg'.");
   }
 
   if (!text) {
@@ -1056,6 +1124,10 @@ function validateDrawBarcodeOptions(options) {
 }
 
 function drawBitsBarcode(g, options, encodeData) {
+  if (g === "path") {
+    return drawBitsBarcodeToPath(options, encodeData);
+  }
+
   if (g === "svg") {
     return drawBitsBarcodeToSVG(options, encodeData);
   }

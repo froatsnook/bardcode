@@ -1,6 +1,8 @@
-Render 1-D barcodes to canvas or svg.  Supports Code 128, 3 of 9, 2 of 5, EAN, and more.
+Render 1-D barcodes to canvas, svg, or path.  Supports Code 128, 3 of 9, 2 of 5, EAN, and more.
 
 ## Why?
+This barcode library has no dependencies 👍.
+
 This barcode library specializes in its use of the canvas API.  You provide a canvas (be it in a browser or with [node-canvas](https://github.com/Automattic/node-canvas)), and then specify where the barcode should be drawn, how large it should be, and at what angle.
 
 Other barcode libraries that I found created pngs or svgs directly and were not very flexible in the output size (i.e. no `maxWidth` option).  Rendering directly to a canvas allows for a flexible API if that's your target anyway.
@@ -81,6 +83,21 @@ Note: `width` and `maxWidth` refer to the unrotated barcode width.
 If the first parameter to `bardcode.drawBarcode`, `g`, is `"svg"`, then an SVG string is returned.
 
 For the moment, the only supported options when using SVG are:
+* `options.type`
+* `options.height`
+* `options.moduleWidth`
+* `options.quietZoneSize`
+* `options.maxWidth`
+* `options.width`
+
+## Path
+If the first parameter to `bardcode.drawBarcode`, `g`, is `"path"`, then a path string is returned, like:
+
+```path
+M 28.920,0 l 5.784,0 l 0,90.72 l -5.784,0 Z M 37.596,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 46.272,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 60.732,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 69.408,0 l 11.568,0 l 0,90.72 l -11.568,0 Z M 83.868,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 92.544,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 98.328,0 l 5.784,0 l 0,90.72 l -5.784,0 Z M 109.896,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 124.356,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 130.140,0 l 11.568,0 l 0,90.72 l -11.568,0 Z M 147.492,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 156.168,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 164.844,0 l 11.568,0 l 0,90.72 l -11.568,0 Z M 179.304,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 187.980,0 l 11.568,0 l 0,90.72 l -11.568,0 Z M 205.332,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 211.116,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 219.792,0 l 5.784,0 l 0,90.72 l -5.784,0 Z M 234.252,0 l 8.676,0 l 0,90.72 l -8.676,0 Z M 245.820,0 l 2.892,0 l 0,90.72 l -2.892,0 Z M 251.604,0 l 5.784,0 l 0,90.72 l -5.784,0 Z
+```
+
+For the moment, the only supported options when using path are:
 * `options.type`
 * `options.height`
 * `options.moduleWidth`
