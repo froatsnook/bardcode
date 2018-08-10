@@ -393,7 +393,7 @@ function encodeEAN(text, hasChecksum) {
 
   var origChecksum = void 0;
   if (hasChecksum) {
-    origChecksum = text.substr(text.length - 1, 1);
+    origChecksum = parseInt(text.substr(text.length - 1, 1), 10);
     text = text.substr(0, text.length - 1);
   }
 
