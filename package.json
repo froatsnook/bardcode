@@ -2,6 +2,7 @@
   "name": "bardcode",
   "version": "2.0.1",
   "description": "Draw 1-D barcodes to Canvases",
+  "files": ["dist"],
   "main": "dist/bardcode.js",
   "jsnext:main": "dist/bardcode.es.js",
   "directories": {
