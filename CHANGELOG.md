@@ -1,3 +1,13 @@
+# 2.1.0 2019-05-31
+* Add GS1 128 type. Thanks Tom S!
+
+## 2.0.1 - 2018-08-14
+* Fix EAN checksum check
+
+## 2.0.0 - 2017-11-14
+* Add Path output
+* Make ES6 and rollup builds
+
 ## 1.2.0 - 2015-09-01
 * Add `options.hasChecksum`.  Thank you wolfgang42!
 

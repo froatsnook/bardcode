@@ -1025,7 +1025,7 @@ var copyDefaults = function copyDefaults(target, source) {
  * @param {Context2D|String} g An HTML5 or node-canvas graphics context or the output format.  The only supported non-canvas output formats are "path" and "svg".
  * @param {String|String[]} text Barcode text (without start, end, or check characters).  It can also be an array of characters, in case you want to include a command character, like "FNC 1".
  * @param {Object} options Controls what barcode is drawn, where, and how.
- * @param {String} options.type Barcode type.  Defaults to Code 128.  Other valid options are "Codabar", "Code 39", "EAN-8", "EAN-13", "FIM", "ITF" (interleaved 2 of 5), and "UPC-A".
+ * @param {String} options.type Barcode type.  Defaults to Code 128.  Other valid options are "GS1 128", "Codabar", "Code 39", "EAN-8", "EAN-13", "FIM", "ITF" (interleaved 2 of 5), and "UPC-A".
  * @param {Boolean} options.hasChecksum If true, the barcode already has a checksum (which will be validated); if false, calculate and add a checksum. Defaults to false. **Currently works only for EAN-type barcodes (EAN-8, EAN-13, UPC-A).**
  * @param {Number} options.x Where to draw barcode.  Defaults to 0.
  * @param {Number} options.y Where to draw the barcode.  Defaults to 0.
@@ -1062,6 +1062,15 @@ function drawBarcode(g, text, options) {
       break;
     case "Code 128":
       encodeData = encodeCode128(text);
+      break;
+    case "GS1 128":
+      // GS1 128 is a Code 128 barcode with an FNC 1 at the begining.
+      var textArray = [];
+      textArray.push("FNC 1");
+      for (var n = 0; n < text.length; n++) {
+        textArray.push(text[n]);
+      }
+      encodeData = encodeCode128(textArray);
       break;
     case "Code 39":
       encodeData = encodeCode39(text);
@@ -1135,7 +1144,7 @@ function drawBitsBarcode(g, options, encodeData) {
   return drawBitsBarcodeToCanvas(g, options, encodeData);
 }
 
-var version = "2.0.1";
+var version = "2.1.0";
 
 exports.drawBarcode = drawBarcode;
 exports.version = version;
