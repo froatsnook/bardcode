@@ -136,6 +136,7 @@ Tests require meteor and zbar.
 Thank you:
 
 * [wolfgang42](https://github.com/wolfgang42)
+* Tom S.
 
 ## License
 MIT
