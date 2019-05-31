@@ -5,7 +5,7 @@ This barcode library has no dependencies 👍.
 
 This barcode library specializes in its use of the canvas API.  You provide a canvas (be it in a browser or with [node-canvas](https://github.com/Automattic/node-canvas)), and then specify where the barcode should be drawn, how large it should be, and at what angle.
 
-Other barcode libraries that I found created pngs or svgs directly and were not very flexible in the output size (i.e. no `maxWidth` option).  Rendering directly to a canvas allows for a flexible API if that's your target anyway.
+Other barcode libraries that I found created pngs or svgs directly and were not very flexible in the output size (i.e. no `maxWidth` option).  Rendering directly to a canvas allows for a flexible API if that's your target anyway.  You can also easily generate SVG or Path text output.
 
 ## Demos/Playground
 First of all, check out the [demos](https://froatsnook.github.io/bardcode/).
