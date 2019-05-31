@@ -43,7 +43,7 @@ drawBarcode(g, "Test barcode", options);
 The following barcode formats are supported:
 
 * Codabar
-* Code 128
+* Code 128 (and GS1 128)
 * Code 39
 * EAN-8
 * EAN-13
@@ -62,9 +62,9 @@ bardcode.drawBarcode(g, barcodeText, options);
 ```
 
 * `g` is a Canvas' 2-D graphics context or the output format.  The only supported non-canvas output format is `"svg"`.
-* `barcodeText` is a string.  Allowed characters depend on the chosen symbology.
+* `barcodeText` is a string or an array (in case you want to include command characters like "FNC 1").  Allowed characters depend on the chosen symbology.  You generally don't need to include start, end, or check characters.
 * `options` is an optional object with the following properties:
-    * `options.type` Barcode type.  Defaults to Code 128.  Other valid options are "Codabar", "Code 39", "EAN-8", "EAN-13", "FIM", "ITF" (interleaved 2 of 5), and "UPC-A".
+    * `options.type` Barcode type.  Defaults to Code 128.  Other valid options are "GS1 128", "Codabar", "Code 39", "EAN-8", "EAN-13", "FIM", "ITF" (interleaved 2 of 5), and "UPC-A".
     * `options.hasChecksum` If true, the barcode already has a checksum (which will be validated); if false, calculate and add a checksum. Defaults to false. **Currently works only for EAN-type barcodes (EAN-8, EAN-13, UPC-A).** 
     * `options.x` Where to draw barcode.  Defaults to 0.
     * `options.y` Where to draw the barcode.  Defaults to 0.
