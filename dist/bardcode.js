@@ -1144,7 +1144,7 @@ function drawBitsBarcode(g, options, encodeData) {
   return drawBitsBarcodeToCanvas(g, options, encodeData);
 }
 
-var version = "2.1.0";
+var version = "2.2.0";
 
 exports.drawBarcode = drawBarcode;
 exports.version = version;

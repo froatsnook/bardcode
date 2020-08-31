@@ -1,3 +1,6 @@
+# 2.2.0 2020-08-31
+* Add $/+% to Code 39 lookup table. Thanks I P Susila!
+
 # 2.1.0 2019-05-31
 * Add GS1 128 type. Thanks Tom S!
 
